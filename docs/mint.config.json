@@ -1,0 +1,54 @@
+{
+  "name": "Functionary",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "api": {
+    "baseUrl": "https://api.functionary.run",
+    "authentication": { "type": "apiKey" }
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#424054",
+    "light": "#E9E8EC",
+    "dark": "#2B2B2F",
+    "ultraLight": "#F9F9F9",
+    "ultraDark": "#1C1F23"
+  },
+  "topbarLinks": [
+    {
+      "name": "Contact",
+      "url": "mailto:justin@functionary.run"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Log In",
+    "url": "https://functionary.run/login"
+  },
+  "anchors": [
+    {
+      "name": "Contact Us",
+      "url": "mailto:justin@functionary.run",
+      "icon": "envelope",
+      "color": "#0284c7"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Introduction",
+      "pages": ["get-started", "payment-methods"]
+    },
+    {
+      "group": "Smart Contracts",
+      "pages": ["multi-contract", "pre-fill"]
+    },
+    {
+      "group": "Platform API",
+      "pages": ["get-projects", "create-project"]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/jahilliar"
+  }
+}
