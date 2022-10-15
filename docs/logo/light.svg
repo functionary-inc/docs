@@ -1,60 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="594px" height="594px" viewBox="0 0 594 594" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Group</title>
-    <defs>
-        <rect id="path-1" x="0" y="0" width="512" height="512" rx="24"></rect>
-        <filter x="-12.0%" y="-12.0%" width="124.0%" height="124.0%" filterUnits="objectBoundingBox" id="filter-2">
-            <feMorphology radius="4.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
-            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="16" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.262745098   0 0 0 0 0.580392157   0 0 0 0 0.423529412  0 0 0 1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
-            <feMorphology radius="3" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter2"></feMorphology>
-            <feOffset dx="0" dy="0" in="shadowSpreadOuter2" result="shadowOffsetOuter2"></feOffset>
-            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.964705882   0 0 0 0 0.811764706   0 0 0 0 0.82745098  0 0 0 0.461483829 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
-            <feMorphology radius="1.5" operator="erode" in="SourceAlpha" result="shadowSpreadOuter3"></feMorphology>
-            <feOffset dx="0" dy="0" in="shadowSpreadOuter3" result="shadowOffsetOuter3"></feOffset>
-            <feGaussianBlur stdDeviation="9" in="shadowOffsetOuter3" result="shadowBlurOuter3"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.568627451   0 0 0 0 0.819607843   0 0 0 0 0.97254902  0 0 0 1 0" type="matrix" in="shadowBlurOuter3" result="shadowMatrixOuter3"></feColorMatrix>
-            <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
-                <feMergeNode in="shadowMatrixOuter3"></feMergeNode>
-            </feMerge>
-        </filter>
-        <filter x="-11.3%" y="-11.3%" width="122.7%" height="122.7%" filterUnits="objectBoundingBox" id="filter-3">
-            <feMorphology radius="10" operator="erode" in="SourceAlpha" result="shadowSpreadInner1"></feMorphology>
-            <feGaussianBlur stdDeviation="8" in="shadowSpreadInner1" result="shadowBlurInner1"></feGaussianBlur>
-            <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
-            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
-            <feColorMatrix values="0 0 0 0 0.443137255   0 0 0 0 0.443137255   0 0 0 0 0.474509804  0 0 0 0.15234375 0" type="matrix" in="shadowInnerInner1" result="shadowMatrixInner1"></feColorMatrix>
-            <feMorphology radius="10" operator="erode" in="SourceAlpha" result="shadowSpreadInner2"></feMorphology>
-            <feGaussianBlur stdDeviation="5" in="shadowSpreadInner2" result="shadowBlurInner2"></feGaussianBlur>
-            <feOffset dx="0" dy="0" in="shadowBlurInner2" result="shadowOffsetInner2"></feOffset>
-            <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner2"></feComposite>
-            <feColorMatrix values="0 0 0 0 0.321568627   0 0 0 0 0.321568627   0 0 0 0 0.352941176  0 0 0 0.460882867 0" type="matrix" in="shadowInnerInner2" result="shadowMatrixInner2"></feColorMatrix>
-            <feMorphology radius="14" operator="erode" in="SourceAlpha" result="shadowSpreadInner3"></feMorphology>
-            <feGaussianBlur stdDeviation="10" in="shadowSpreadInner3" result="shadowBlurInner3"></feGaussianBlur>
-            <feOffset dx="0" dy="0" in="shadowBlurInner3" result="shadowOffsetInner3"></feOffset>
-            <feComposite in="shadowOffsetInner3" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner3"></feComposite>
-            <feColorMatrix values="0 0 0 0 0.247058824   0 0 0 0 0.247058824   0 0 0 0 0.270588235  0 0 0 0.539335664 0" type="matrix" in="shadowInnerInner3" result="shadowMatrixInner3"></feColorMatrix>
-            <feMerge>
-                <feMergeNode in="shadowMatrixInner1"></feMergeNode>
-                <feMergeNode in="shadowMatrixInner2"></feMergeNode>
-                <feMergeNode in="shadowMatrixInner3"></feMergeNode>
-            </feMerge>
-        </filter>
-    </defs>
+<svg width="885px" height="311px" viewBox="0 0 885 311" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
     <g id="branding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-612.000000, -279.000000)">
-            <g id="Group" transform="translate(653.000000, 320.000000)">
-                <g id="Rectangle">
-                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-                    <use fill="#181816" fill-rule="evenodd" xlink:href="#path-1"></use>
-                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-1"></use>
+        <g id="Artboard" transform="translate(-653.000000, -491.000000)">
+            <g id="Group-2" transform="translate(653.000000, 491.000000)">
+                <g id="Group" fill="#181816">
+                    <rect id="Rectangle" x="154" y="228" width="115" height="31.5" rx="8"></rect>
+                    <path d="M116.8,87.5864 L147.151,87.5864 L144.253,98.8768 L114.584,98.8768 C108.673,129.555 98.8966,169.927 85.2558,219.992 C74.5703,258.882 62.9187,284.485 50.3009,296.801 C40.7522,306.267 30.9194,311 20.8024,311 C14.4366,311 9.37812,309.232 5.62688,305.697 C1.87562,302.276 0,298.056 0,293.038 C0,288.59 1.30725,284.941 3.92176,282.09 C6.64995,279.239 9.71917,277.813 13.1294,277.813 C16.0849,277.813 18.6426,278.839 20.8024,280.892 C23.0759,282.945 24.2126,285.112 24.2126,287.393 C24.2126,289.902 23.4169,292.069 21.8255,293.893 C20.6887,295.262 20.1204,296.345 20.1204,297.144 C20.1204,298.056 20.5182,298.854 21.3139,299.539 C22.1096,300.337 23.1327,300.736 24.3832,300.736 C26.6566,300.736 28.7596,300.166 30.6921,299.025 C34.1023,297.086 37.4557,293.437 40.7523,288.077 C44.0488,282.717 47.459,272.624 50.9829,257.798 C51.6649,255.289 56.5529,231.625 65.6469,186.805 C66.4426,182.814 73.4335,153.504 86.6198,98.8768 L56.4393,98.8768 L58.997,87.5864 C70.2507,86.7882 77.2985,85.9329 80.1404,85.0204 C83.0959,83.9941 85.5399,82.1694 87.4724,79.5462 C90.4279,75.6688 93.8381,68.0279 97.7031,56.6232 C106.001,32.4459 113.958,16.9359 121.575,10.093 C129.077,3.36455 137.432,0 146.64,0 C153.688,0 159.314,1.88198 163.521,5.64522 C167.84,9.40892 170,13.9137 170,19.1595 C170,23.1513 168.863,26.3445 166.59,28.7393 C164.316,31.1344 161.588,32.3319 158.405,32.3317 C155.45,32.3319 152.892,31.3625 150.732,29.4235 C148.686,27.3709 147.663,25.1471 147.663,22.7519 C147.663,20.9274 148.288,18.9887 149.539,16.9356 C150.789,14.769 151.414,13.2294 151.414,12.3168 C151.414,11.0626 150.903,9.97914 149.88,9.06655 C148.856,8.26847 147.379,7.86932 145.446,7.86909 C141.809,7.8693 138.512,9.23785 135.557,11.9747 C131.578,15.7384 128.963,20.5283 127.713,26.3443 C124.644,40.1439 121.006,60.5579 116.8,87.5864 Z" id="Path" fill-rule="nonzero"></path>
                 </g>
-                <rect id="Rectangle" fill="#FAFAFA" x="268" y="328" width="115" height="31.5" rx="8"></rect>
-                <path d="M230.8,187.5864 L261.151,187.5864 L258.253,198.8768 L228.584,198.8768 C222.673,229.555 212.8966,269.927 199.2558,319.992 C188.5703,358.882 176.9187,384.485 164.3009,396.801 C154.7522,406.267 144.9194,411 134.8024,411 C128.4366,411 123.37812,409.232 119.62688,405.697 C115.87562,402.276 114,398.056 114,393.038 C114,388.59 115.30725,384.941 117.92176,382.09 C120.64995,379.239 123.71917,377.813 127.1294,377.813 C130.0849,377.813 132.6426,378.839 134.8024,380.892 C137.0759,382.945 138.2126,385.112 138.2126,387.393 C138.2126,389.902 137.4169,392.069 135.8255,393.893 C134.6887,395.262 134.1204,396.345 134.1204,397.144 C134.1204,398.056 134.5182,398.854 135.3139,399.539 C136.1096,400.337 137.1327,400.736 138.3832,400.736 C140.6566,400.736 142.7596,400.166 144.6921,399.025 C148.1023,397.086 151.4557,393.437 154.7523,388.077 C158.0488,382.717 161.459,372.624 164.9829,357.798 C165.6649,355.289 170.5529,331.625 179.6469,286.805 C180.4426,282.814 187.4335,253.504 200.6198,198.8768 L170.4393,198.8768 L172.997,187.5864 C184.2507,186.7882 191.2985,185.9329 194.1404,185.0204 C197.0959,183.9941 199.5399,182.1694 201.4724,179.5462 C204.4279,175.6688 207.8381,168.0279 211.7031,156.6232 C220.001,132.4459 227.958,116.9359 235.575,110.093 C243.077,103.36455 251.432,100 260.64,100 C267.688,100 273.314,101.88198 277.521,105.64522 C281.84,109.40892 284,113.9137 284,119.1595 C284,123.1513 282.863,126.3445 280.59,128.7393 C278.316,131.1344 275.588,132.3319 272.405,132.3317 C269.45,132.3319 266.892,131.3625 264.732,129.4235 C262.686,127.3709 261.663,125.1471 261.663,122.7519 C261.663,120.9274 262.288,118.9887 263.539,116.9356 C264.789,114.769 265.414,113.2294 265.414,112.3168 C265.414,111.0626 264.903,109.97914 263.88,109.06655 C262.856,108.26847 261.379,107.86932 259.446,107.86909 C255.809,107.8693 252.512,109.23785 249.557,111.9747 C245.578,115.7384 242.963,120.5283 241.713,126.3443 C238.644,140.1439 235.006,160.5579 230.8,187.5864 Z" id="Path" fill="#FAFAFA" fill-rule="nonzero"></path>
+                <text id="uctionary" font-family="Poppins-Medium, Poppins" font-size="152" font-weight="400" fill="#27272A">
+                    <tspan x="152" y="209">uctionary</tspan>
+                </text>
             </g>
         </g>
     </g>
