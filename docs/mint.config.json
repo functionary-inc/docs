@@ -10,11 +10,11 @@
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#424054",
-    "light": "#E9E8EC",
-    "dark": "#2B2B2F",
-    "ultraLight": "#F9F9F9",
-    "ultraDark": "#1C1F23"
+    "primary": "#0284c7",
+    "light": "#e4e4e7",
+    "dark": "#3f3f46",
+    "ultraLight": "#fafafa",
+    "ultraDark": "#18181b"
   },
   "topbarLinks": [
     {
@@ -23,7 +23,7 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Log In",
+    "name": "Try It",
     "url": "https://functionary.run/login"
   },
   "anchors": [
@@ -37,15 +37,15 @@
   "navigation": [
     {
       "group": "Introduction",
-      "pages": ["get-started", "payment-methods"]
+      "pages": ["get-started"]
     },
     {
-      "group": "Smart Contracts",
-      "pages": ["multi-contract", "pre-fill"]
+      "group": "Config",
+      "pages": ["models", "actions", "triggers"]
     },
     {
       "group": "Platform API",
-      "pages": ["get-projects", "create-project"]
+      "pages": ["identify", "events"]
     }
   ],
   "footerSocials": {
