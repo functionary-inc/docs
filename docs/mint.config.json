@@ -5,12 +5,12 @@
     "dark": "/logo/dark.svg"
   },
   "api": {
-    "baseUrl": "https://api.functionary.run",
+    "baseUrl": "https://functionary.run/",
     "authentication": { "type": "apiKey" }
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0284c7",
+    "primary": "#43946C",
     "light": "#e4e4e7",
     "dark": "#3f3f46",
     "ultraLight": "#fafafa",

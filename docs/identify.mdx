@@ -1,6 +1,44 @@
 ---
-title: "Overview"
-description: "Trigger Notfications & Webhooks on User Events"
+title: "Identify"
+description: "Identify different models"
+> api: 'POST /api/v1/identify'
 ---
 
 ## Basics
+
+There are 2 main API endpoints for functionary. The first is `/api/v1/identify`. The second is `/api/v1/events`. These are exactly the same.
+
+## How it works
+
+`identify` is how you create different instances of models you've defined in your config.
+
+## Aliases and Ids
+
+<RequesteExample>
+curl --request POST \
+     --url 'https://functionary.run/api/v1/identify' \
+<RequesteExample>
+
+<ParamField body="displayName" type="string">
+Human-readable name of an instance of a model that is identified
+<ParamField>
+
+<ParamField body="model" type="string" required>
+Model type of the object you are trying to identify.  This type must exist in you config.
+<ParamField>
+
+<ParamField body="ids" type="(string | number)[]" required>
+id or ids of the object your are trying to create. see below for explination.
+<ParamField>
+
+<ParamField body="childIds" type="(string | number)[]" >
+The ids of the child objects for this model instance.  If ids representing multiple different child objects are sent, the identified model instance will be set to the parent for ALL the different objects.  If the childId doesn't yet exist, the id will be saved and paired when the child model instance is created.
+<ParamField>
+
+<ParamField body="parentIds" type="(string | number)[]" >
+The ids of the parent object for this model instance.  If ids representing multiple different parent objects are sent, the identified model instance will be set to a child for ALL the different objects.  If the parentId doesn't yet exist, the id will be saved and paired when the parent model instance is created.
+<ParamField>
+
+<ParamField body="properties" type="object" >
+Properties you want stored on the model instance you are creating.
+<ParamField>
