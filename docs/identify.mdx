@@ -6,18 +6,28 @@ description: "Identify different models"
 
 ## Basics
 
-There are 2 main API endpoints for functionary. The first is `/api/v1/identify`. The second is `/api/v1/events`. These are exactly the same.
+There are 2 main API endpoints for functionary. The first is `/api/v1/identify`.
+The second is `/api/v1/events`. These are exactly the same.
 
 ## How it works
 
 `identify` is how you create different instances of models you've defined in your config.
+Before you can send any events for an object, you need to create it by calling identify.
+This endpoint is meant to be fired the multiple time, not just the time an app learns
+about an model instance. To update a model instance, you also call identify. For example,
+you might call `identify` to create a user. The user has a property `task_created`. To updated
+`task_created`, you'll call `identify` with the new value for `task_created`. `identify` is last write
+wins, so update the model as it makes sense.
 
 ## Aliases and Ids
 
-<RequesteExample>
-curl --request POST \
-     --url 'https://functionary.run/api/v1/identify' \
-<RequesteExample>
+A model instances can have many different ids and are easily updated.
+To add more ids to model, just send them along with already identified ids.
+If there are no existing ids in the ids payload for existing model instances,
+functionary will create a new model instance. If an id in the payload already
+belongs to a model instance, the payload are will be treated as an update for
+that model. Properties and displayName will be overwritten. Additional ids
+will be added to that model.
 
 <ParamField body="displayName" type="string">
 Human-readable name of an instance of a model that is identified
@@ -42,3 +52,30 @@ The ids of the parent object for this model instance.  If ids representing multi
 <ParamField body="properties" type="object" >
 Properties you want stored on the model instance you are creating.
 <ParamField>
+
+<RequesteExample>
+```bash JavaScript
+await fetch('https://functionary.run/api/v1/identify', 
+    {  
+        method: "POST", 
+        header: {
+            Authorization: "Bearer MY-TOKEN"
+        }
+        body: {
+            ids: ['10', 'test@example.com'],
+            model: 'customer',
+        } 
+    }
+)
+```
+<RequesteExample>
+
+<ResponseExample>
+
+```json Response Example
+{
+  "success": true
+}
+```
+
+</ResponseExample>
