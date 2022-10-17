@@ -8,9 +8,9 @@
     "baseUrl": "https://functionary.run/",
     "authentication": { "type": "apiKey" }
   },
-  "favicon": "/favicon.png",
+  "favicon": "/favicon.ico",
   "colors": {
-    "primary": "#43946C",
+    "primary": "#10b981",
     "light": "#e4e4e7",
     "dark": "#3f3f46",
     "ultraLight": "#fafafa",
@@ -23,7 +23,7 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Try It",
+    "name": "Try It - FREE",
     "url": "https://functionary.run/login"
   },
   "anchors": [
@@ -31,17 +31,19 @@
       "name": "Contact Us",
       "url": "mailto:justin@functionary.run",
       "icon": "envelope",
-      "color": "#0284c7"
+      "color": "#f43f5e"
+    },
+    {
+      "name": "Get Started",
+      "url": "https://functionary.run/login",
+      "icon": "star-shooting",
+      "color": "#0ea5e9"
     }
   ],
   "navigation": [
     {
       "group": "Introduction",
-      "pages": ["get-started"]
-    },
-    {
-      "group": "Config",
-      "pages": ["models", "actions", "triggers"]
+      "pages": ["get-started", "configuration"]
     },
     {
       "group": "Platform API",

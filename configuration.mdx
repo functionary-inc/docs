@@ -1,0 +1,62 @@
+---
+title: "Configuration"
+description: ""
+---
+
+## Overview
+
+The configuration file is a declarative `json` blob that controls functionary settings.
+
+- [Models →](http://docs.functionary.run/configuration#models)
+- [Actions →](http://docs.functionary.run/configuration#actions)
+- [Triggers →](http://docs.functionary.run/configuration#triggers)
+
+### Models
+
+A representation of an object that takes actions. This is be different for every company, but usually is a customer or organization. That said, you can name it however you like.
+
+These models are declared in the configuration file. They are created by calling the `/api/v1/identify` endpoint.
+
+```json Model Example
+{
+  "models": [
+    {
+      "name": "organization",
+      "trigger_on_first_identify": {
+        ..trigers
+      },
+    },
+    { "name": "customer" },
+  ]
+  ..restOfConfig
+}
+
+```
+
+| Property                    | Required | Description                                                                     |
+| --------------------------- | -------- | ------------------------------------------------------------------------------- |
+| `name`                      | ✅       | a human readable identifier to reference the action object (usually snakecase). |
+| `trigger_on_first_identify` |          | a trigger object that is fired when a model is first identified.                |
+
+### Actions
+
+Actions represent an event or sequence of events that are taken by a model. These event sequences activate different triggers.
+
+As models objects use the product,the developer call `/api/v1/events` which triggers
+
+| Property                  | Required | Description                                                                     |
+| ------------------------- | -------- | ------------------------------------------------------------------------------- |
+| `id`                      | ✅       | a human readable identifier to reference the action object (usually snakecase). |
+| `on_chronological_events` |          | a set of chonological milestones achieved by users.                             |
+
+```json Model Example
+{
+  "id": "on"
+  "on_chronological_events": [
+    {"event": "step_1"}
+    {"event": "step_2"}
+  ]
+}
+```
+
+### Triggers
