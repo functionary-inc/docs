@@ -1,6 +1,53 @@
 ---
 title: "Events"
-description: "Trigger Notfications & Webhooks on User Events"
+description: "Fire an event"
+api: "POST api/v1/event"
 ---
 
-## Basics
+<ParamField
+  header="Authorization"
+  placeholder="Bearer this-is-token"
+  type="object"
+>
+  Your api key found in the dashboard under settings
+</ParamField>
+
+<ParamField body="name" type="string" required>
+  name of the event.
+</ParamField>
+
+<ParamField body="ids" type="(string | number)[]" required>
+  id or ids of the model your are calling the event on. If the model doesn't
+  exist, the event will be thrown out.
+</ParamField>
+
+<ParamField body="properties" type="object">
+  Properties you want stored on the event you are creating.
+</ParamField>
+
+<RequestExample>
+```bash JavaScript
+await fetch('https://functionary.run/api/v1/events', 
+    {  
+        method: "POST", 
+        header: {
+            Authorization: "Bearer MY-TOKEN"
+        }
+        body: {
+            ids: ['10', 'test@example.com'],
+            event: 'sign_up',
+        } 
+    }
+)
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json Response Example
+{
+  "statusCode": 200
+}
+```
+
+</ResponseExample>

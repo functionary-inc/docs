@@ -8,7 +8,7 @@
     "baseUrl": "https://functionary.run/",
     "authentication": { "type": "apiKey" }
   },
-  "favicon": "/favicon.ico",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#10b981",
     "light": "#e4e4e7",

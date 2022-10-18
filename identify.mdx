@@ -62,6 +62,14 @@ will be added to that model.
   Properties you want stored on the model instance you are creating.
 </ParamField>
 
+<ParamField
+  header="Authorization"
+  placeholder="Bearer this-is-token"
+  type="object"
+>
+  Your api key found in the dashboard under settings
+</ParamField>
+
 <RequestExample>
 ```bash JavaScript
 await fetch('https://functionary.run/api/v1/identify', 
@@ -83,7 +91,7 @@ await fetch('https://functionary.run/api/v1/identify',
 
 ```json Response Example
 {
-  "success": true
+  "statusCode": 200
 }
 ```
 

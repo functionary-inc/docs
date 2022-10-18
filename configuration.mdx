@@ -9,6 +9,7 @@ The configuration file is a declarative `json` blob that controls functionary se
 
 - [Models →](http://docs.functionary.run/configuration#models)
 - [Actions →](http://docs.functionary.run/configuration#actions)
+- [Events →](http://docs.functionary.run/configuration#events)
 - [Triggers →](http://docs.functionary.run/configuration#triggers)
 
 ### Models
@@ -23,7 +24,7 @@ These models are declared in the configuration file. They are created by calling
     {
       "name": "organization",
       "trigger_on_first_identify": {
-        ..trigers
+        ..triggers
       },
     },
     { "name": "customer" },
@@ -33,30 +34,135 @@ These models are declared in the configuration file. They are created by calling
 
 ```
 
-| Property                    | Required | Description                                                                     |
-| --------------------------- | -------- | ------------------------------------------------------------------------------- |
-| `name`                      | ✅       | a human readable identifier to reference the action object (usually snakecase). |
-| `trigger_on_first_identify` |          | a trigger object that is fired when a model is first identified.                |
+| Property                    | Required | Description                                                      |
+| --------------------------- | -------- | ---------------------------------------------------------------- |
+| `name`                      | ✅       | a human readable name of the model. (usually snakecase).         |
+| `trigger_on_first_identify` |          | a trigger object that is fired when a model is first identified. |
 
 ### Actions
 
-Actions represent an event or sequence of events that are taken by a model. These event sequences activate different triggers.
-
-As models objects use the product,the developer call `/api/v1/events` which triggers
+Actions represent an event or sequence of events that are taken by a model. These activate different triggers.
 
 | Property                  | Required | Description                                                                     |
 | ------------------------- | -------- | ------------------------------------------------------------------------------- |
 | `id`                      | ✅       | a human readable identifier to reference the action object (usually snakecase). |
-| `on_chronological_events` |          | a set of chonological milestones achieved by users.                             |
+| `on_chronological_events` |          | a set of chonological event objects.                                            |
 
-```json Model Example
+```json Actions Example
 {
-  "id": "on"
-  "on_chronological_events": [
-    {"event": "step_1"}
-    {"event": "step_2"}
-  ]
+  "actions": [
+    {
+      "id": "on"
+      "on_chronological_events": [
+        ...otherEvents
+      ]
+    }
+    ...otherActions
+  ],
+  ...restOfConfig
+}
+```
+
+### Events
+
+An event is a step of an action. These steps are sequential. They can have triggers. The triggers are fired when the event is satisfied.
+A event is satified when the developer calls `/api/v1/events` with an event name that equals the event name in the event object.
+
+<Warning>
+  If there are multiple events in an `on_chronological_events` array, the event
+  can only be satified if every event before it has been satified and the single
+  event after it has NOT been satified.
+</Warning>
+
+| Property   | Required | Description                                              |
+| ---------- | -------- | -------------------------------------------------------- |
+| `event`    | ✅       | name of the event                                        |
+| `triggers` |          | trigger object that is fired when the event is satisfied |
+
+```json Events Example
+{
+  "actions": [
+    {
+      "id": "on"
+      "on_chronological_events": [
+        {
+          "event": "sign_up",
+          "triggers": { ...triggers }
+        },
+        {
+          "event": "completed_onboarding",
+          "triggers": { ...triggers }
+        }
+        ...otherEvents
+      ]
+    }
+    ...otherActions
+  ],
+  ...restOfConfig
 }
 ```
 
 ### Triggers
+
+Triggers are how the developer defines the behaivors of a satified event in an action. A trigger can exist in a few different places.
+
+1. On a model on `trigger_on_first_identify`, which will trigger when a model is first identified.
+1. In a event on `trigger`, which will trigger when the event is satified
+
+| Property   | Required | Description                                              |
+| ---------- | -------- | -------------------------------------------------------- |
+| `notifs`   |          | name of the event                                        |
+| `webhooks` |          | trigger object that is fired when the event is satisfied |
+
+#### Notifs
+
+```json Notif Examples
+{ "destination": "slack", "channel": "a-channel-name"}
+{ "destination": "email", "email": "email@email.com"}
+{ "destination": "sms", "number": "+14248973778"}
+```
+
+#### Webhooks
+
+```json Notif Examples
+{
+  "method": "GET",
+  "url": "aurl.com/anything",
+  "headers": { "Authorization": "token", ...moreHeaders }
+}
+{
+  "method": "POST",
+  "url": "aurl.com/anything",
+  "headers": { "Authorization": "token", ...moreHeaders }
+  "body": { "param1": "something", ...moreBody }
+}
+```
+
+```json Trigger Example
+{
+  "models": [
+    {
+      "trigger_on_first_identify": {
+        "notifs": [{}, ...moreNotifs ],
+        "webhooks": [{}, ...moreWebhooks],
+       },
+    },
+  ],
+  "actions": [
+    {
+      "id": "on"
+      "on_chronological_events": [
+        {
+          "event": "sign_up",
+          "triggers": {
+            "notifs": [{}, ...moreNotifs ],
+            "webhooks": [{}, ...moreWebhooks],
+           }
+        },
+      ]
+    }
+    ...otherActions
+  ],
+  ...restOfConfig
+}
+```
