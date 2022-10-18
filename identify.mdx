@@ -7,7 +7,7 @@ api: "POST api/v1/identify"
 ## Basics
 
 There are 2 main API endpoints for functionary. The first is `/api/v1/identify`.
-The second is `/api/v1/events`. These are exactly the same.
+The second is `/api/v1/events`.
 
 ## How it works
 
@@ -19,15 +19,7 @@ you might call `identify` to create a user. The user has a property `task_create
 `task_created`, you'll call `identify` with the new value for `task_created`. `identify` is last write
 wins, so update the model as it makes sense.
 
-## Aliases and Ids
-
-A model instances can have many different ids and are easily updated.
-To add more ids to model, just send them along with already identified ids.
-If there are no existing ids in the ids payload for existing model instances,
-functionary will create a new model instance. If an id in the payload already
-belongs to a model instance, the payload are will be treated as an update for
-that model. Properties and displayName will be overwritten. Additional ids
-will be added to that model.
+## Parameters
 
 <ParamField body="displayName" type="string">
   Human-readable name of an instance of a model that is identified
@@ -69,6 +61,17 @@ will be added to that model.
 >
   Your api key found in the dashboard under settings
 </ParamField>
+
+## Aliases and Ids
+
+A model instances can have many different ids and are easily updated.
+To add more ids to model, just send them along with already identified ids.
+If there are no existing ids in the ids payload for existing model instances,
+functionary will create a new model instance.
+
+If an id in the payload already belongs to a model instance, the payload are
+will be treated as an update for that model. Properties and displayName will be
+overwritten. Additional ids will be added to that model.
 
 <RequestExample>
 ```bash JavaScript
