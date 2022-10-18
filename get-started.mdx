@@ -5,65 +5,20 @@ description: "Trigger Alerts & Webhooks on User Events"
 
 ## Basics
 
-Functionary triggers alerts & webhooks when on user events. Based on analytics events, it stores the state. Using that state, you can take actions.
+Functionary triggers alerts & webhooks on user analytics events. Based on the events, it stores the state. Using that state, it takes actions.
+It's all defined by you in a config file.
 
 <CardGroup cols={2}>
   <Card title="Alerts" icon={duotone("square-1")} color="#ea5a0c">
-    Get alerted whenever a user satifies
+    Get SMS, email, and slack alerts as users complete events.
   </Card>
   <Card title="Webhooks" icon={duotone("square-2")} color="#0285c7">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    Trigger webhooks as users complete events.
   </Card>
   <Card title="Endpoints" icon={duotone("square-3")} color="#16a34a">
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    Use custom endpoints to pull users for Retool.
   </Card>
   <Card title="Emails" icon={duotone("square-4")} color="#dc2626">
-    Excepteur sint occaecat cupidatat non proident
+    Get emailed on events.
   </Card>
 </CardGroup>
-
-## Usecases
-
-<AccordionGroup>
-  <Accordion title="Founder B2B Sales"></Accordion>
-  <Accordion title="Churn Notifications"></Accordion>
-</AccordionGroup>
-
--
-
-```json
-{
-  "models": [
-    {
-      "name": "organization",
-      "trigger_on_first_identify": {
-        "notifs": { "destination": "slack", "channel": "sales-funnel" },
-        "webhooks": [{ "method": "GET", "url": "http://anockableURL.com" }]
-      }
-    },
-    { "name": "customer" }
-  ],
-  "actions": [
-    {
-      "id": "onboarding_funnel",
-      "on_chronological_events": [
-        { "event": "signed_up" },
-        { "event": "completed_profile" },
-        {
-          "event": "started_first_stream",
-          "trigger": {
-            "notifs": [{ "destination": "slack", "channel": "sales-funnel" }]
-          }
-        },
-        {
-          "event": "had_first_attendee",
-          "trigger": {
-            "notifs": { "destination": "slack", "channel": "sales-funnel" },
-            "webhooks": { "method": "POST", "url": "http://anockableURL.com" }
-          }
-        }
-      ]
-    }
-  ]
-}
-```

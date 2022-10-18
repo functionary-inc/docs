@@ -166,3 +166,42 @@ Triggers are how the developer defines the behaivors of a satified event in an a
   ...restOfConfig
 }
 ```
+
+## Sample
+
+```json Sample
+{
+  "models": [
+    {
+      "name": "organization",
+      "trigger_on_first_identify": {
+        "notifs": { "destination": "slack", "channel": "sales-funnel" },
+        "webhooks": [{ "method": "GET", "url": "http://anockableURL.com" }]
+      }
+    },
+    { "name": "customer" }
+  ],
+  "actions": [
+    {
+      "id": "onboarding_funnel",
+      "on_chronological_events": [
+        { "event": "signed_up" },
+        { "event": "completed_profile" },
+        {
+          "event": "started_first_stream",
+          "trigger": {
+            "notifs": [{ "destination": "slack", "channel": "sales-funnel" }]
+          }
+        },
+        {
+          "event": "had_first_attendee",
+          "trigger": {
+            "notifs": { "destination": "slack", "channel": "sales-funnel" },
+            "webhooks": { "method": "POST", "url": "http://anockableURL.com" }
+          }
+        }
+      ]
+    }
+  ]
+}
+```
