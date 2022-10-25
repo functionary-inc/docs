@@ -9,14 +9,6 @@ api: "POST api/v1/event"
 There are 2 main API endpoints for functionary. The first is `/api/v1/identify`.
 The second is `/api/v1/events`.
 
-<ParamField
-  header="Authorization"
-  placeholder="Bearer this-is-token"
-  type="object"
->
-  Your api key found in the dashboard under settings
-</ParamField>
-
 <ParamField body="name" type="string" required>
   name of the event.
 </ParamField>
@@ -28,6 +20,14 @@ The second is `/api/v1/events`.
 
 <ParamField body="properties" type="object">
   Properties you want stored on the event you are creating.
+</ParamField>
+
+<ParamField
+  header="Authorization"
+  placeholder="Bearer this-is-token"
+  type="object"
+>
+  Your api key found in the dashboard under settings
 </ParamField>
 
 <RequestExample>

@@ -43,8 +43,13 @@
   "navigation": [
     {
       "group": "Introduction",
-      "pages": ["get-started", "configuration"]
+      "pages": ["get-started"]
     },
+    {
+      "group": "Configuration",
+      "pages": ["overview", "models", "funnels", "actions"]
+    },
+
     {
       "group": "Platform API",
       "pages": ["identify", "events"]

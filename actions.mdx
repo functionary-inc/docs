@@ -1,0 +1,79 @@
+---
+title: "Actions"
+---
+
+Actions are how you define activities that happens after a [step](/funnels#steps) is satified. Actions are not a
+top-level key like `models` or `funnels`. Instead they live inside steps, which live inside funnels (see example at bottom
+in [funnels](/funnels)).
+
+### Parameters
+
+<ParamField body="type" type="string" required>
+  This is the type of the action. For example, `slack`, `email`, `sms`, or
+  `http`. See the [Action Types]() section for more details
+</ParamField>
+
+<ParamField body="args" type="object" required>
+  Detailed for the parameters for the action. These use
+  [liquid](https://shopify.github.io/liquid/) to template properties.
+</ParamField>
+
+---
+
+| Property   | Required | Description                                              |
+| ---------- | -------- | -------------------------------------------------------- |
+| `notifs`   |          | name of the event                                        |
+| `webhooks` |          | trigger object that is fired when the event is satisfied |
+
+#### Notifs
+
+```json Notif Examples
+{ "type": "slack", "channel": "a-channel-name"}
+{ "type": "email", "email": "email@email.com"}
+{ "type": "sms", "number": "+14248973778"}
+```
+
+#### Webhooks
+
+```json Notif Examples
+{
+  "method": "GET",
+  "url": "aurl.com/anything",
+  "headers": { "Authorization": "token", ...moreHeaders }
+}
+{
+  "method": "POST",
+  "url": "aurl.com/anything",
+  "headers": { "Authorization": "token", ...moreHeaders }
+  "body": { "param1": "something", ...moreBody }
+}
+```
+
+```json Trigger Example
+{
+  "models": [
+    {
+      "trigger_on_first_identify": {
+        "notifs": [{}, ...moreNotifs ],
+        "webhooks": [{}, ...moreWebhooks],
+       },
+    },
+  ],
+  "actions": [
+    {
+      "id": "on"
+      "on_chronological_events": [
+        {
+          "event": "sign_up",
+          "triggers": {
+            "notifs": [{}, ...moreNotifs ],
+            "webhooks": [{}, ...moreWebhooks],
+           }
+        },
+      ]
+    }
+    ...otherActions
+  ],
+  ...restOfConfig
+}
+```
