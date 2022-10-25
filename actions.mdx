@@ -10,70 +10,50 @@ in [funnels](/funnels)).
 
 <ParamField body="type" type="string" required>
   This is the type of the action. For example, `slack`, `email`, `sms`, or
-  `http`. See the [Action Types]() section for more details
+  `webhook`. See the [Action Types]() section for more details
 </ParamField>
 
 <ParamField body="args" type="object" required>
-  Detailed for the parameters for the action. These use
-  [liquid](https://shopify.github.io/liquid/) to template properties.
+  Detailed parameters for the action. These can use
+  [liquid](https://shopify.github.io/liquid/) templating for each recursive
+  value in the args object. See the [Action Types](). For detailed examples of
+  the shape of the args parameter.
 </ParamField>
 
----
+### Templating Args
 
-| Property   | Required | Description                                              |
-| ---------- | -------- | -------------------------------------------------------- |
-| `notifs`   |          | name of the event                                        |
-| `webhooks` |          | trigger object that is fired when the event is satisfied |
+you can use [liquid](https://shopify.github.io/liquid/) to template the string values in the `action.args` object.
 
-#### Notifs
+For example, let's say you want to send a congrats text to a customer after they complete onboarding. The action
+might look like
 
-```json Notif Examples
-{ "type": "slack", "channel": "a-channel-name"}
-{ "type": "email", "email": "email@email.com"}
-{ "type": "sms", "number": "+14248973778"}
-```
-
-#### Webhooks
-
-```json Notif Examples
+```json
 {
-  "method": "GET",
-  "url": "aurl.com/anything",
-  "headers": { "Authorization": "token", ...moreHeaders }
-}
-{
-  "method": "POST",
-  "url": "aurl.com/anything",
-  "headers": { "Authorization": "token", ...moreHeaders }
-  "body": { "param1": "something", ...moreBody }
+  "type": "sms",
+  "args": {
+    "number": "{{modelProperties.number}}",
+    "content": "Congrats {{displayName}}!"
+  }
 }
 ```
 
-```json Trigger Example
+when the step is statisfied the action would turn into something like
+
+```json
 {
-  "models": [
-    {
-      "trigger_on_first_identify": {
-        "notifs": [{}, ...moreNotifs ],
-        "webhooks": [{}, ...moreWebhooks],
-       },
-    },
-  ],
-  "actions": [
-    {
-      "id": "on"
-      "on_chronological_events": [
-        {
-          "event": "sign_up",
-          "triggers": {
-            "notifs": [{}, ...moreNotifs ],
-            "webhooks": [{}, ...moreWebhooks],
-           }
-        },
-      ]
-    }
-    ...otherActions
-  ],
-  ...restOfConfig
+  "type": "sms",
+  "args": { "number": "+14248349987", "content": "Congrats Justin!" }
 }
 ```
+
+which would eventually turn into send a sms to `14248349987` saying `Congrats Justin!`.  
+These action objects have access to these parameters.
+
+| Parameter         | example                              | Description                                                                                                                   |
+| ----------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| `modelProperties` | `{{modelProperties.fisrtName}}`      | All the properties EVER stored on the model. These are created by setting the `properties` value in a `api/v1/identify` call. |
+| `displayName`     | `{{displayName}}`                    | the displayName from the model object triggering the action.                                                                  |
+| `model`           | `{{model}}`                          | the model name of the model object triggering the action.                                                                     |
+| `funnel`          | `{{funnel}}`                         | the funnel id of the action.                                                                                                  |
+| `event`           | `{{event}}`                          | the event name of the event triggering the action.                                                                            |
+| `eventProperties` | `{{eventProperties.attributionSrc}}` | The properties that are sent with the event that triggered this action. note: this is only the properties from this event.    |
