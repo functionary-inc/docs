@@ -49,10 +49,13 @@
       "group": "Configuration",
       "pages": ["overview", "models", "funnels", "actions"]
     },
-
     {
       "group": "Platform API",
       "pages": ["identify", "events"]
+    },
+    {
+      "group": "Action Types",
+      "pages": ["sms", "email", "slack", "webhook"]
     }
   ],
   "footerSocials": {
