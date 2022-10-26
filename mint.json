@@ -47,7 +47,7 @@
     },
     {
       "group": "Configuration",
-      "pages": ["overview", "models", "funnels", "actions"]
+      "pages": ["overview", "models", "funnels", "actions", "sample"]
     },
     {
       "group": "Platform API",
