@@ -5,7 +5,6 @@ title: "Example"
 ```json
 {
   // We have 2 models one is a "customer", another is an "organization".
-  // "organization" will be parents of "customers".
   "models": [{ "name": "organization" }, { "name": "customer" }],
   "funnels": [
     // this funnel triggers everytime we call `/identify` an "organization".
@@ -19,7 +18,7 @@ title: "Example"
         // this is a special event that is fired when `/identify` is called
         "event": "onFunctionaryIdentify",
         "actions": [
-          // this tells functionary to make the slack channel call
+          // this tells functionary to message slack connect channel with our customer.
           // note liquid templating. see action section for more details
           {
             "type": "slack",
@@ -29,7 +28,7 @@ title: "Example"
               "content": "{{ displayName }} was just identified."
             }
           },
-          // this tells functionary to make the http call
+          // this tells functionary to make a http call
           // note liquid templating. see action section for more details
           {
             "type": "webhook",
