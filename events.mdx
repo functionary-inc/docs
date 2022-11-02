@@ -22,6 +22,16 @@ The second is `/api/v1/events`.
   Properties you want stored on the event you are creating.
 </ParamField>
 
+<ParamField body="model" type="string">
+  The type of the model to assign the event. This is for to avoiding `id`
+  collisions accross model types. For example, you may send `ids = [1]`, but it
+  is possible that a model where `id=1` exists for both model types of
+  "organization" and "customer". If `model="customer"` exists functionary knows
+  to assign event to the "customer" model not the organization. If it doesn't
+  exist, functionary will assign the relationship to the first model it finds
+  with a matching id.
+</ParamField>
+
 <ParamField
   header="Authorization"
   placeholder="Bearer this-is-token"

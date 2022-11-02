@@ -39,9 +39,19 @@ wins, so update the model as it makes sense.
 <ParamField body="childIds" type="(string | number)[]">
   The ids of the child objects for this model instance. If ids representing
   multiple different child objects are sent, the identified model instance will
-  be set to the parent for ALL the different objects. If the childId doesn't yet
-  exist, the id will be saved and paired when the child model instance is
+  be set to the parent for *ALL* the different objects. If the childId doesn't
+  yet exist, the id will be saved and paired when the child model instance is
   created.
+</ParamField>
+
+<ParamField body="childModel" type="string">
+  The type of the model being assigned as the child. This is for to avoiding
+  `id` collisions accross model types. For example, you may send `childIds =
+  [1]`, but it is possible that a model where `id=1` exists for both model types
+  of "organization" and "customer". If `childModel="customer"` exists
+  functionary knows to only assign the relationship of "child" to "customer"
+  model not the organization. If it doesn't exist, functionary will assign the
+  relationship to the first model it finds with a matching id.
 </ParamField>
 
 <ParamField body="parentIds" type="(string | number)[]">
@@ -50,6 +60,16 @@ wins, so update the model as it makes sense.
   be set to a child for ALL the different objects. If the parentId doesn't yet
   exist, the id will be saved and paired when the parent model instance is
   created.
+</ParamField>
+
+<ParamField body="parentModel" type="string">
+  The type of the model being assigned as the parent. This is for to avoiding
+  `id` collisions accross model types. For example, you may send `parentIds =
+  [1]`, but it is possible that a model where `id=1` exists for both model types
+  of "organization" and "customer". If `parentModel="customer"` exists
+  functionary knows to only assign the relationship of "parent" to "customer"
+  model not the organization. If it doesn't exist, functionary will assign the
+  relationship to the first model it finds with a matching id.
 </ParamField>
 
 <ParamField body="properties" type="object">
@@ -82,10 +102,12 @@ Ids are unique within the same model type. This means you can have an `id = 837`
 a customer model instance and an `id = 837` for a organization model instance, but you
 can't have 2 customer model instances with `id = 837`.
 
-<Tip>
-  If you think you need a model to share an id, you may want to consider a
-  parent model instead.
-</Tip>
+<Note>
+  If two different typed models exist with the same id (noted above), you'll
+  need to use the optional `childModel` or the `parentModel` parameters in the
+  `/identify` request body to assign relationships. This avoids a relationship
+  being assigned to the wrong model.
+</Note>
 
 For example, if I `/identify` a "customer" model with `ids = [1]`, assuming there is no customer yet
 created with that id, a model will be created. Now if I `/identify` a "customer" model with
@@ -94,6 +116,11 @@ created with that id, a model will be created. Now if I `/identify` a "customer"
 
 After those 2 calls, let's say I call `/identify` (or `/event`) with
 only `ids = [some@email.com]`, we will be referrencing the same model where `ids = [1]`.
+
+<Tip>
+  If you think you need a model to share an id, you may want to consider a
+  parent model instead.
+</Tip>
 
 <RequestExample>
 ```bash JavaScript
