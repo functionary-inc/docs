@@ -1,5 +1,5 @@
 ---
-title: "email"
+title: "sendgrid"
 ---
 
 <Note>
@@ -8,15 +8,26 @@ title: "email"
 
 Sends a email to the address specified with the content and subject specified.
 
-<ParamField body="type" type="string = 'email'" required>
-  Must equal the string `email`.
+<ParamField body="type" type="string = 'sendgrid'" required>
+  Must equal the string `sendgrid`.
+</ParamField>
+
+<ParamField body="integrationId" type="string">
+  The `integrationId` is the id from the integrations page. Technically, this is
+  optional. If it is left blank, we will send messages from the functionary
+  sendgrid account. The `from` parameter will be over written with
+  `justin@functionary.run`, which will be the sending email address.
 </ParamField>
 
 <ParamField body="args" type="object" required>
   <Expandable title="properties" defaultOpen={true}>
 
-    <ResponseField name="email" type="templatable string" required>
-      email address
+    <ResponseField name="to" type="templatable string" required>
+      email address sending to.
+    </ResponseField>
+
+    <ResponseField name="from" type="templatable string" required>
+      email address to be sent from.
     </ResponseField>
 
     <ResponseField name="text" type="templatable string" required>
@@ -34,8 +45,9 @@ Sends a email to the address specified with the content and subject specified.
 {
   "type": "email",
   "args": {
-    "email": "{{modelProperties.email}}",
-    "subject": "Top 10 Tips to Finish Integration!"
+    "to": "{{modelProperties.email}}",
+    "from": "justin.a.hilliard@gmail.com",
+    "subject": "Top 10 Tips to Finish Integration!",
     "text": "Hey {{displayName}} -- Hope all is well. - Justin"
   }
 }

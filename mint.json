@@ -55,7 +55,7 @@
     },
     {
       "group": "Action Types",
-      "pages": ["sms", "email", "slack", "webhook"]
+      "pages": ["twilio", "sendgrid", "slack", "webhook"]
     }
   ],
   "footerSocials": {
