@@ -14,6 +14,12 @@ How to interact with the slack API with functionary.
   Must equal the string `slack`.
 </ParamField>
 
+<ParamField body="integrationId" type="string">
+  The `integrationId` is the id from the integrations page. Technically, this is
+  optional. If it is left blank, we will send a message from the functionary
+  slack bot account.
+</ParamField>
+
 <ParamField body="args" type="object" required>
   <Expandable title="Send a Message to a Channel" defaultOpen={true}>
 
